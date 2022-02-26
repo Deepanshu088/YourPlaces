@@ -1,9 +1,0 @@
-{
-    "env": {
-        "DB_USERNAME": "baby",
-        "DB_PASSWORD": "baby1234",
-        "DB_NAME": "YourPlace",
-        "JWT_SECRET": "SuperSecertkeyMustNotBePublic",
-        "MAPQUEST_KEY": "3raBSGQQ7XX22salQNU67BgSTiAv5BDk"
-    }
-}
