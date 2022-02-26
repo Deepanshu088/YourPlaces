@@ -36,18 +36,26 @@ const SignIn = (props)=>{
 
     const submitHandler = async e => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('name', formState.inputs.username.value);
-        formData.append('email', formState.inputs.email.value);
-        formData.append('password', formState.inputs.password.value);
-        formData.append('image', formState.inputs.image.value);
-        console.log(formData);
+        // const formData = new FormData();
+        // formData.append('name', formState.inputs.username.value);
+        // formData.append('email', formState.inputs.email.value);
+        // formData.append('password', formState.inputs.password.value);
+        // formData.append('image', formState.inputs.image.value);
+        // console.log(formData);
         
         try{
             let headers = {
                 Authorization: 'Bearer '+ context.token,
+                'Content-Type': 'application/json'
             }
-            const data = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/signup/`, 'POST', formData, headers)
+            let user = JSON.stringify({
+                name: formState.inputs.username.value,
+                email: formState.inputs.email.value,
+                password: formState.inputs.password.value,
+                image: formState.inputs.image.value
+            })
+            console.log(user);
+            const data = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/signup/`, 'POST', user, headers)
             console.log(data)
             console.log(data.user);
             context.login(data.user._id, data.token);
@@ -64,9 +72,9 @@ const SignIn = (props)=>{
                 <h2>SignUp Required</h2>
                 <form onSubmit={submitHandler}>
                     <Input id='username' element='input' label='UserName' type='text' validators={[VALIDATOR_REQUIRE()]} errorText='Please enter a valid UserName' onInput={InputHandler} ></Input>
-                    <ImageUpload  id='image' center= {true} onInput={InputHandler} errorText='Please upload a valid image.' />
                     <Input id='email' element='input' label='E-Mail' type='text' validators={[VALIDATOR_EMAIL()]} errorText='Please enter a valid email!' onInput={InputHandler} ></Input>
                     <Input id='password' element='input' label='Password' type='password' validators={[VALIDATOR_MINLENGTH(5)]} errorText='Please enter a valid password(min 5 characters)' onInput={InputHandler} ></Input>
+                    <Input id='image' element='input' label='Profile Image Link' type='text' validators={[VALIDATOR_REQUIRE()]} errorText='Please enter a valid Image url!' onInput={InputHandler} ></Input>
                     <Button type='submit' disabled={!formState.isValid}>SignUp</Button>
                 </form>
                 <Button inverse onClick={props.onToggle} >Switch to Login</Button>

@@ -41,19 +41,26 @@ const NewPlace = ()=>{
 
 
     const onSubmitHandler = async e =>{
-        const formData = new FormData();
+        // const formData = new FormData();
 
-        formData.append('title',formState.inputs['title'].value);
-        formData.append('description',formState.inputs['description'].value);
-        formData.append('address',formState.inputs['address'].value);
-        formData.append('image',formState.inputs['image'].value);
+        // formData.append('title',formState.inputs['title'].value);
+        // formData.append('description',formState.inputs['description'].value);
+        // formData.append('address',formState.inputs['address'].value);
+        // formData.append('image',formState.inputs['image'].value);
         e.preventDefault();
         try{
             let headers = {
                 Authorization: 'Bearer '+ authContext.token,
+                'Content-Type': 'application/json'
             }
+            let placeData = JSON.stringify({
+                title: formState.inputs['title'].value,
+                description: formState.inputs['description'].value,
+                address: formState.inputs['address'].value,
+                image: formState.inputs['image'].value
+            })
             console.log(headers);
-            const data = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/places/`,'POST', formData, headers)
+            const data = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/places/`,'POST', placeData, headers)
             console.log(data)
             history.push(`/`+(authContext.userId)+`/places/`)
         }catch(e){
@@ -68,7 +75,7 @@ const NewPlace = ()=>{
             {   !isLoading &&
                 <form className='place-form' onSubmit={onSubmitHandler}>
                     <Input id='title' element='input' type='text' label='Title' validators={[VALIDATOR_REQUIRE()]} errorText='Please enter a vaid input!' onInput={inputHandler}/>
-                    <ImageUpload id='image' onInput={InputHandler} center={true} errorText='Please upload a valid image.' />
+                    <Input id='image' element='input' type='text' label='Place Image Url ' validators={[VALIDATOR_REQUIRE()]} errorText='Please enter a vaid url!' onInput={inputHandler}/>
                     <Input  id='description' element='textarea' label='Description' validators={[VALIDATOR_MINLENGTH(5)]} errorText='Please enter a vaid decription (atleast 5 charactors).' onInput={inputHandler}/>
                     <Input  id='address' element='input' label='Address' validators={[VALIDATOR_REQUIRE()]} errorText='Please enter a valid address' onInput={inputHandler}/>
                     <Button type='submit' disabled={!formState.isValid}>Add Place</Button>
