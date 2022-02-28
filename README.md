@@ -5,7 +5,7 @@ This project is not live on heroku becoz it have a image storage system on the s
 
 Have a look around.
 
-**Setting Up the Project**
+# **Setting Up the Project**
 
 Commands for setting up the project are :- 
 npm install
