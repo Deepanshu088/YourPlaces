@@ -4,3 +4,13 @@ Hello Everyone, The code is at master branch. There are two folders one is backe
 This project is not live on heroku becoz it have a image storage system on the server and file storage is not supported by heroku, atleast not in free version.
 
 Have a look around.
+
+**Setting Up the Project**
+
+Commands for setting up the project are :- 
+npm install
+npm run start
+
+**Note**:- Right now for custom port number other than 3000 in frontend React, the start script in pakage.json is setup for a linux based system (specifically Ubuntu). If you are using a windows os, then you need to change the start scrypt in Reactjs to --
+
+**_set PORT=3005 && react-scripts start_**
