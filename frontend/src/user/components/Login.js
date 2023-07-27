@@ -39,8 +39,6 @@ const Login = (props)=>{
                     password: formState.inputs.password.value }),
                 headers
             )
-            console.log(data);
-            console.log(data.user);
             context.login(data.user._id, data.token);
         }catch(e){
             console.log(e);
@@ -51,7 +49,7 @@ const Login = (props)=>{
         <React.Fragment>
             <ErrorModal error={error} onClear={clearError} />
             <Card className='authentication'>
-                { isLoading && <LoadingSpinner   asOverlay /> }
+                { isLoading && <LoadingSpinner asOverlay /> }
                 <h2>Login Required</h2>
                 <form onSubmit={submitHandler}>
                     <Input id='email' element='input' label='E-Mail' type='text' validators={[VALIDATOR_EMAIL()]} errorText='Please enter a valid email!' onInput={InputHandler} ></Input>

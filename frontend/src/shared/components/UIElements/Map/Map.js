@@ -12,7 +12,7 @@ const Map = props =>{
         <ReactMapGL 
             className='map'
             {...viewport}
-            mapboxApiAccessToken= {process.env.REACT_APP_MAPBOX_API_KEY}
+            mapboxAccessToken= {process.env.REACT_APP_MAPBOX_API_KEY}
             mapStyle='mapbox://styles/helldk/ckrrqzoqi8uu417qrcn0cfb8p'
             width="100%"
             height="100%"

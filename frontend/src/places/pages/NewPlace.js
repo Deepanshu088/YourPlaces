@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "../../shared/components/FormElements/Button";
-import ImageUpload from "../../shared/components/FormElements/ImageUpload";
+// import ImageUpload from "../../shared/components/FormElements/ImageUpload";
 import Input from "../../shared/components/FormElements/Input";
 import ErrorModal from "../../shared/components/UIElements/Components/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/Components/LoadingSpinner";
@@ -12,7 +12,7 @@ import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../../shared/util/valida
 import './NewPlace.css'
 
 const NewPlace = ()=>{
-    const history = useHistory();
+    const navigate = useNavigate();
     const authContext = useContext(AuthContext);
     const { sendRequest, isLoading, error, clearError } = useHttp();
     const [formState, InputHandler] = useForm({
@@ -59,10 +59,8 @@ const NewPlace = ()=>{
                 address: formState.inputs['address'].value,
                 image: formState.inputs['image'].value
             })
-            console.log(headers);
             const data = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/places/`,'POST', placeData, headers)
-            console.log(data)
-            history.push(`/`+(authContext.userId)+`/places/`)
+            navigate(`/`+(authContext.userId)+`/places/`)
         }catch(e){
             console.log(e);
         }

@@ -1,4 +1,4 @@
-import { useHistory, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button';
 import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from '../../shared/util/validators';
@@ -14,7 +14,7 @@ const UpdatePlace = props =>{
     const authContext = useContext(AuthContext);
     const placeId = useParams().placeId;
     const [isLoading, setIsLoading] = useState(true);
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const { sendRequest, error, clearError, isLoading: isLoad} = useHttp();
 
@@ -50,7 +50,7 @@ const UpdatePlace = props =>{
                 headers
             );
             console.log(data)
-            history.push(`/${authContext.userId}/places`);
+            navigate(`/${authContext.userId}/places`);
         }catch(e){
             console.log(e);
         }

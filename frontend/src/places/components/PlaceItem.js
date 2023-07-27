@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../shared/components/FormElements/Button';
 import Card from '../../shared/components/UIElements/Card/Card'
 import Modal from '../../shared/components/UIElements/Card/Modal';
@@ -12,7 +12,7 @@ import './PlaceItem.css'
 
 const PlaceItem = props =>{
     const context = useContext(AuthContext);
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const { sendRequest, error, isLoading, clearError } = useHttp();
 
@@ -37,7 +37,7 @@ const PlaceItem = props =>{
             console.log(e);
         }
         setShowComfirm(false);
-        history.push(`/`);
+        navigate(`/`);
     }
 
     return (

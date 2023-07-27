@@ -1,5 +1,5 @@
 import React, { Fragment, Suspense, useContext } from 'react';
-import  { BrowserRouter as Router, Route, Redirect,Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Navigate, Routes } from 'react-router-dom';
 
 // import Users from './user/pages/Users';
 // import NewPlace from './places/pages/NewPlace';
@@ -29,34 +29,31 @@ function App() {
                         <div className='center'>
                             <LoadingSpinner />
                         </div>
-                    }>    
-                        <Switch>
-                            <Route path='/' exact>
-                                <Users />
+                    }>
+                        <Routes>
+                            <Route path='/' element={<Users />}>
                             </Route>
-                            <Route path='/:userId/places' exact>
-                                <UserPlaces />
+                            <Route path='/:userId/places' element={<UserPlaces />}>
                             </Route>
-                            {   context.isLoggedIn &&
-                                <Switch>
-                                    <Route path='/places/new' exact>
-                                        <NewPlace />
+                            {context.isLoggedIn &&
+                                <React.Fragment>
+                                    <Route path='/places/new' element={<NewPlace />}>
                                     </Route>
-                                    <Route path='/places/:placeId' exact>
-                                        <UpdatePlace />
+                                    <Route path='/places/:placeId' exact element={<UpdatePlace />}>
                                     </Route>
-                                    <Redirect to="/" />
-                                </Switch>
+
+                                    <Route path='*' element = { <Navigate to="/" /> }> </Route>
+                                </React.Fragment>
                             }
-                            {   !context.isLoggedIn &&
-                                <Switch>
-                                    <Route path='/auth'>
-                                        <Auth />
+
+                            {!context.isLoggedIn &&
+                                <React.Fragment>
+                                    <Route path='/auth' element={<Auth />}>
                                     </Route>
-                                    <Redirect to="/auth" />
-                                </Switch>
+                                    <Route path='*' element = { <Navigate to="/auth" /> }> </Route>
+                                </React.Fragment>
                             }
-                        </Switch>
+                        </Routes>
                     </Suspense>
                 </main>
             </Router>

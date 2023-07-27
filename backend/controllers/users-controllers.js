@@ -61,7 +61,7 @@ const signup = async (req, res, next)=>{
         console.log(e);
         return next(new HttpError('Signing Up failed. try again later', 500));
     }
-
+    newUser.password = undefined;
     res.status(201).json({user: newUser, token: token});
 }
 const login = async (req, res, next)=>{
@@ -96,7 +96,7 @@ const login = async (req, res, next)=>{
         return next(new HttpError('login failed. try again later', 500));
     }
 
-
+    existingUser[0].password = undefined;
     res.status(200).json({user: existingUser[0], message: 'Login', token: token});
 
 }
