@@ -7,7 +7,7 @@ services:
     ports:
       - 3000:3000
     env_file:
-      - ./backend/.env
+      - ../.backend.env
   frontend_reactjs:
     build: 
       context: ./frontend
@@ -15,5 +15,5 @@ services:
     ports:
       - 5000:5000
     env_file:
-      - ./frontend/.env
+      - ../.frontend.env
     
