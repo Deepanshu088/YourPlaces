@@ -15,8 +15,10 @@ pipeline {
                 echo "Build"
                 checkout scm
                 sh "pwd"
+                sh "cat ../.backend.env"
                 sh "ls -a"
                 sh "echo 'Build Successful' "
+                // checkout scm
             }
         }
         stage("Push to Docker Hub"){
