@@ -16,7 +16,6 @@ pipeline {
                 checkout scm
                 sh "pwd"
                 sh "ls -a"
-                sh "docker build . -t node-hello"
                 sh "echo 'Build Successful' "
             }
         }
