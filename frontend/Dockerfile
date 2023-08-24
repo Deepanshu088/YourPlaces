@@ -2,9 +2,10 @@ FROM node:20-alpine
 
 WORKDIR /home/workspace/yourplaces/frontend
 
+RUN npm cache clear -f
+
 COPY ./package.json .
-RUN npm install
-RUN npm install mapbox-gl
+RUN npm install --verbose
 COPY . .
 RUN npm run build
 
