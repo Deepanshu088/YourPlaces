@@ -15,20 +15,18 @@ pipeline {
                 echo "Build"
                 checkout scm
                 sh "pwd"
-                sh "cat ../.backend.env"
                 sh "ls -a"
                 sh "echo 'Build Successful' "
-                // checkout scm
             }
         }
         stage("Push to Docker Hub"){
             steps {
                 echo "Push to Docker Hub"
-                // withCredentials([usernamePassword(credentialsId: "DockerHubCredentials", passwordVariable: "dockerHubPass", usernameVariable: "dockerHubUser")]){
-                //     sh "docker tag node-hello ${env.dockerHubUser}/node-hello:latest"
-                //     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                //     sh "docker push  ${env.dockerHubUser}/node-hello-test:latest"
-                // }
+                withCredentials([usernamePassword(credentialsId: "DockerHubCredentials", passwordVariable: "dockerHubPass", usernameVariable: "dockerHubUser")]){
+                    // sh "docker tag node-hello ${env.dockerHubUser}/node-hello:latest"
+                    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+                    // sh "docker push  ${env.dockerHubUser}/node-hello-test:latest"
+                }
                 echo "Pushed to Docker Successfully"
             }
         }
@@ -36,7 +34,7 @@ pipeline {
             steps {
                 echo "Deploy"
                 // sh "docker run -d -p 3000:3000 node-hello"
-                sh "docker compose down && docker compose up -d --build"
+                // sh "docker compose down && docker compose up -d --build"
                 echo "Deploy Successful"
             }
         }
