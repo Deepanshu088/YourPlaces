@@ -6,7 +6,7 @@ pipeline {
                 echo "Pre-Build"
                 deleteDir()
                 sh "docker --version"
-                sh "docker compose version"
+                sh "docker-compose version"
                 echo "Pre-Build Complete"
             }
         }
