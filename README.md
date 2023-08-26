@@ -2,12 +2,12 @@
 Hello Everyone, The code is at the readyForLive branch. There are two folders one is the backend and the other is frontend. The backend is developed with NodeJs, and ExpressJs and integrated with MongoDb. Frontend is developed by Reactjs. 
 Here is the list of features it provides:-
 
-• Social Media platform to post locations/places you have visited.
-• Post contains an image that will be stored on the server side.
-• Post also contains an address which will be converted to geographical coordinates latitude and longitude using Mapbox (like Google Maps).
-• A complete MERN Stack Web Development project with clean UI, code structure, proper MVC architecture, error handling, routing, authentication, and authorization.
-• On Frontend, advanced features like Routing, Redux Store, and Custom Hooks are used.
-• Post has a ”Show in Map” option which will display a map with the respective latitude and longitude.
+- Social Media platform to post locations/places you have visited.
+- Post contains an image that will be stored on the server side.
+- Post also contains an address which will be converted to geographical coordinates latitude and longitude using Mapbox (like Google Maps).
+- A complete MERN Stack Web Development project with clean UI, code structure, proper MVC architecture, error handling, routing, authentication, and authorization.
+- On Frontend, advanced features like Routing, Redux Store, and Custom Hooks are used.
+- Post has a ”Show in Map” option which will display a map with the respective latitude and longitude.
 
 # **Setting Up the Project**
 
