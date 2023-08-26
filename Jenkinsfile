@@ -16,11 +16,8 @@ pipeline {
                 checkout scm
                 sh "pwd"
                 sh "ls -a"
-                // sh '''
-                //     docker build ./backend -t your-places-backend
-                //     docker build ./frontend -t your-places-frontend
-
-                // '''
+                sh "docker build ./backend -t your-places-backend"
+                sh "docker build ./frontend -t your-places-frontend"
                 sh "echo 'Build Successful' "
             }
         }
@@ -33,8 +30,8 @@ pipeline {
                     echo "${env.dockerHubUser}"
                     
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                    // docker tag your-places-backend ${env.dockerHubUser}/your-places-backend:latest
-                    // docker tag your-places-frontend ${env.dockerHubUser}/your-places-frontend:latest
+                    sh "docker tag your-places-backend ${env.dockerHubUser}/your-places-backend:latest"
+                    sh "docker tag your-places-frontend ${env.dockerHubUser}/your-places-frontend:latest"
                 
 
                     // sh '''
