@@ -30,7 +30,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: "DockerHubCredentials", passwordVariable: "dockerHubPass", usernameVariable: "dockerHubUser")]){
                     // sh "docker tag node-hello ${env.dockerHubUser}/node-hello:latest"
 
-                    echo ${env.dockerHubPass}
+                    echo "${env.dockerHubUser}"
                     
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
                     // docker tag your-places-backend ${env.dockerHubUser}/your-places-backend:latest
