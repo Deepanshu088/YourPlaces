@@ -7,7 +7,7 @@ RUN npm cache clear -f
 COPY ./package.json .
 RUN npm install --verbose
 COPY . .
-RUN npm run build
+# RUN npm run build
 
 EXPOSE 5000
 
