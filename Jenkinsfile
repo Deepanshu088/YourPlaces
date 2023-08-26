@@ -41,7 +41,8 @@ pipeline {
             steps {
                 echo "Deploy"
                 // sh "docker run -d -p 3000:3000 node-hello"
-                // sh "docker compose down && docker compose up -d --build"
+                sh "docker compose down"
+                sh "docker compose up -d --build"
                 echo "Deploy Successful"
             }
         }
