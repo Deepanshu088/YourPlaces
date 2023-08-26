@@ -32,7 +32,7 @@ pipeline {
                     echo "Added Backend and Frontend Tags"
 
                     sh "docker push ${env.dockerHubUser}/your-places-backend:latest"
-                    sh "docker push ${env.dockerHubUser}/your-places-backend:latest"
+                    sh "docker push ${env.dockerHubUser}/your-places-frontend:latest"
                 }
                 echo "Pushed to Docker Successfully"
             }
