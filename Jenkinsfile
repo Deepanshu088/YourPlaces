@@ -25,23 +25,14 @@ pipeline {
             steps {
                 echo "Push to Docker Hub"
                 withCredentials([usernamePassword(credentialsId: "DockerHubCredentials", passwordVariable: "dockerHubPass", usernameVariable: "dockerHubUser")]){
-                    // sh "docker tag node-hello ${env.dockerHubUser}/node-hello:latest"
-
-                    echo "${env.dockerHubUser}"
-                    
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
                     sh "docker tag your-places-backend ${env.dockerHubUser}/your-places-backend:latest"
                     sh "docker tag your-places-frontend ${env.dockerHubUser}/your-places-frontend:latest"
-                
 
-                    // sh '''
-                    //     echo "Added Backend and Frontend Tags"
-                    //     docker push ${env.dockerHubUser}/your-places-backend:latest
-                    //     docker push ${env.dockerHubUser}/your-places-backend:latest
-                    // '''
+                    echo "Added Backend and Frontend Tags"
 
-                    
-                    // sh "docker push  ${env.dockerHubUser}/node-hello-test:latest"
+                    sh "docker push ${env.dockerHubUser}/your-places-backend:latest"
+                    sh "docker push ${env.dockerHubUser}/your-places-backend:latest"
                 }
                 echo "Pushed to Docker Successfully"
             }
