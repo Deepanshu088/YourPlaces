@@ -1,19 +1,21 @@
 version: '1'
 services:
-  backend_nodejs: 
-    build: 
-      context: ./backend
-      dockerfile: Dockerfile
+  backend_nodejs:
+    image: dkjain2000/your-places-backend:latest
+    # build: 
+    #   context: ./backend
+    #   dockerfile: Dockerfile
     ports:
       - 3000:3000
     env_file:
       - ../.backend.env
-  # frontend_reactjs:
-  #   build: 
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - 5000:5000
-  #   env_file:
-  #     - ../.frontend.env
+  frontend_reactjs:
+    image: dkjain2000/your-places-frontend:latest
+    # build: 
+    #   context: ./frontend
+    #   dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    env_file:
+      - ../.frontend.env
     
