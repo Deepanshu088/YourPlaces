@@ -1,7 +1,7 @@
 version: '1'
 services:
   backend_nodejs:
-    image: dkjain2000/your-places-backend:latest
+    image: dkjain2000/timerbe:latest
     # build: 
     #   context: ./backend
     #   dockerfile: Dockerfile
