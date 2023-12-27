@@ -10,7 +10,7 @@ services:
     env_file:
       - ../.backend.env
   frontend_reactjs:
-    image: dkjain2000/your-places-frontend:latest
+    image: dkjain2000/timerfe:latest
     # build: 
     #   context: ./frontend
     #   dockerfile: Dockerfile
