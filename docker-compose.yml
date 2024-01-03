@@ -1,7 +1,7 @@
 version: '1'
 services:
   backend_nodejs:
-    image: dkjain2000/your-places-backend:latest
+    image: dkjain2000/timerbe:latest
     # build: 
     #   context: ./backend
     #   dockerfile: Dockerfile
@@ -10,7 +10,7 @@ services:
     env_file:
       - ../.backend.env
   frontend_reactjs:
-    image: dkjain2000/your-places-frontend:latest
+    image: dkjain2000/timerfe:latest
     # build: 
     #   context: ./frontend
     #   dockerfile: Dockerfile
